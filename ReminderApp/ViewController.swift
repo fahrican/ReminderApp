@@ -11,7 +11,7 @@ import UserNotifications
 
 
 
-class ViewController: UIViewController, UNUserNotificationCenterDelegate {
+class ViewController: UIViewController, UNUserNotificationCenterDelegate, UIActionSheetDelegate {
     
     
     @IBOutlet weak var userInput: UITextField!
@@ -42,6 +42,19 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         
         let userNotificationCenter = UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in })
         
+        let actionSheet = UIActionSheet(title: "Action!", delegate: (self as! UIActionSheetDelegate), cancelButtonTitle: "Cancel?", destructiveButtonTitle: "OK!")
+        actionSheet.actionSheetStyle = .default
+        actionSheet.show(in: self.view)
+    }
+    
+    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAT buttonIndex: Int) {
+        
+        if buttonIndex == 0 {
+            
+            let alertView  = UIAlertView(title: "TestView", message: "Testmessage", delegate: self, cancelButtonTitle: "OK")
+            alertView.alertViewStyle = .default
+            alertView.show()
+        }
     }
     
     
