@@ -13,11 +13,14 @@ import UserNotifications
 
 class ViewController: UIViewController, UNUserNotificationCenterDelegate, UIActionSheetDelegate {
     
+    @IBOutlet weak var labelToChangeText: UILabel!
     
     @IBOutlet weak var userInput: UITextField!
     
     @IBAction func confirm(_ sender: Any) {
         
+        self.labelToChangeText.text = userInput.text
+        self.userInput.text = ""
     }
     
     
